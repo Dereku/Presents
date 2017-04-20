@@ -1,0 +1,21 @@
+settings:
+  skull-owner: 'xDark'
+  allow-reuse: false
+  random-items: false
+  money-reward: 500
+  money-increment: 100
+  max-presents: 2
+  use-economy: true
+  use-dates: true
+  days-passed: 1
+items:
+  - 57,64
+commands:
+  - 'say %name'
+messages:
+  found-all: '&aYou found all presents and got %money'
+  already-found: '&cYou already found this present.'
+  present-placed: '&aPresent has been placed.'
+  present-broken: '&cPresent has been removed.'
+  present-found: '&aYou found %current/%max presents!'
+  days-not-passed: '&cYou must wait %number days before finding again!'

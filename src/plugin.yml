@@ -1,0 +1,6 @@
+name: Presents
+version: 1.6
+author: xDark
+main: me.xDark.presents.Presents
+commands:
+  editmode: {}
