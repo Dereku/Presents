@@ -3,6 +3,7 @@ package me.xDark.presents.listener;
 import java.util.Date;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
@@ -25,7 +26,10 @@ public class ClickListener implements Listener {
 		Block b = e.getClickedBlock();
 		if (b.getType() != Material.SKULL)
 			return;
-		if (!((Skull) b.getState()).getOwner().equalsIgnoreCase(Settings.SKULL_OWNER))
+		Skull skull = (Skull) b.getState();
+		if (skull == null)
+			return;
+		if (!skull.hasOwner() || !skull.getOwner().equalsIgnoreCase(Settings.SKULL_OWNER))
 			return;
 		Player p = e.getPlayer();
 		Statistic statistic = Presents.instance.getStatistics().get(p.getName().toLowerCase());
@@ -52,7 +56,7 @@ public class ClickListener implements Listener {
 			if (Settings.RUN_COMMAND)
 				for (String s : Settings.COMMANDS_TO_RUN)
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),
-							s.replace('&', '§').replace("%name", p.getName()));
+							ChatColor.translateAlternateColorCodes('&', s).replace("%name", p.getName()));
 			statistic.timesFound++;
 			double money = -1;
 			if (Settings.USE_ECONOMY) {
